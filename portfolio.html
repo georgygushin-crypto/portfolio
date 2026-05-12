@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Георгий Гущин — Инженер-конструктор</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@300;400;500&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+
+/* ─── VARIABLES ─────────────────────────────────────── */
+:root {
+  --bg:          #0B0B0B;
+  --surface:     #131211;
+  --surface2:    #1C1917;
+  --surface3:    #252220;
+  --accent:      #8C1F2E;
+  --accent-glow: rgba(140,31,46,0.18);
+  --accent-dim:  #5C141E;
+  --text:        #DDD8D2;
+  --text-muted:  #6B6460;
+  --text-faint:  #3A3633;
+  --border:      #242020;
+  --border2:     #2E2A27;
+  --mono:        'IBM Plex Mono', monospace;
+  --serif:       'Crimson Pro', Georgia, serif;
+  --display:     'Bebas Neue', sans-serif;
+}
+
+/* ─── RESET ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+  cursor: none;
+}
+a { color: inherit; text-decoration: none; }
+img, video { display: block; max-width: 100%; }
+
+/* ─── CURSOR ─────────────────────────────────────────── */
+.cursor {
+  position: fixed; top: 0; left: 0;
+  width: 10px; height: 10px;
+  background: var(--accent); border-radius: 50%;
+  pointer-events: none; z-index: 9999;
+  transform: translate(-50%,-50%);
+  transition: width .2s, height .2s;
+}
+.cursor-ring {
+  position: fixed; top: 0; left: 0;
+  width: 34px; height: 34px;
+  border: 1px solid rgba(140,31,46,.5); border-radius: 50%;
+  pointer-events: none; z-index: 9998;
+  transform: translate(-50%,-50%);
+  transition: transform .18s ease, width .3s, height .3s;
+}
+
+/* ─── GRAIN ──────────────────────────────────────────── */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: .028; pointer-events: none; z-index: 1000;
+}
+
+/* ─── SCROLLBAR ──────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--surface); }
+::-webkit-scrollbar-thumb { background: var(--accent-dim); }
+
+/* ─── NAV ────────────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 20px 48px;
+  display: flex; justify-content: space-between; align-items: center;
+  border-bottom: 1px solid transparent;
+  transition: border-color .4s, background .4s, padding .3s;
+}
+nav.scrolled {
+  background: rgba(11,11,11,.92);
+  border-color: var(--border);
+  backdrop-filter: blur(12px);
+  padding-top: 14px; padding-bottom: 14px;
+}
+.nav-logo {
+  font-family: var(--mono); font-size: 18px;
+  letter-spacing: .15em; color: var(--text-muted); text-transform: uppercase;
+}
+.nav-logo span { color: var(--accent); }
+.nav-links { display: flex; gap: 36px; list-style: none; }
+.nav-links a {
+  font-family: var(--mono); font-size: 17px;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--text-muted); transition: color .2s;
+  position: relative; cursor: none;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -2px; left: 0;
+  width: 0; height: 1px; background: var(--accent);
+  transition: width .25s ease;
+}
+.nav-links a:hover { color: var(--text); }
+.nav-links a:hover::after { width: 100%; }
+
+/* ─── SECTION BASE ───────────────────────────────────── */
+section { padding: 120px 48px; max-width: 1200px; margin: 0 auto; }
+.section-label {
+  font-family: var(--mono); font-size: 16px;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 20px;
+  display: flex; align-items: center; gap: 14px;
+}
+.section-label::before { content: ''; width: 32px; height: 1px; background: var(--accent); }
+h2 {
+  font-family: var(--display);
+  font-size: clamp(42px, 6vw, 72px);
+  letter-spacing: .03em; line-height: 1;
+  color: var(--text); margin-bottom: 60px;
+}
+
+/* ─── HERO ───────────────────────────────────────────── */
+#hero {
+  min-height: 100vh; max-width: 100%;
+  padding: 0 48px 100px;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  position: relative; overflow: hidden;
+}
+.hero-bg-lines { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.hero-bg-lines::before {
+  content: ''; position: absolute;
+  top: 0; bottom: 0; left: 50%; width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--text-faint) 30%, var(--text-faint) 70%, transparent);
+  opacity: .4;
+}
+.hero-bg-lines::after {
+  content: ''; position: absolute;
+  top: 38%; left: 0; right: 0; height: 1px;
+  background: linear-gradient(to right, transparent, var(--text-faint) 20%, var(--text-faint) 80%, transparent);
+  opacity: .3;
+}
+.hero-top-tag {
+  font-family: var(--mono); font-size: 17px;
+  letter-spacing: .2em; color: var(--accent);
+  text-transform: uppercase; margin-bottom: 32px;
+  opacity: 0; animation: fadeUp .8s ease forwards .2s;
+}
+.hero-name {
+  font-family: var(--display);
+  font-size: clamp(64px, 11vw, 160px);
+  line-height: .9; letter-spacing: .02em;
+  color: var(--text); margin-bottom: 40px;
+  opacity: 0; animation: fadeUp .9s ease forwards .4s;
+}
+.hero-name em { display: block; color: var(--accent); font-style: normal; }
+.hero-desc {
+  max-width: 640px;
+  font-size: clamp(17px, 2vw, 22px);
+  font-weight: 300; line-height: 1.65;
+  color: var(--text); margin-bottom: 48px;
+  opacity: 0; animation: fadeUp .9s ease forwards .6s;
+}
+.hero-desc strong { font-weight: 600; }
+.hero-actions {
+  display: flex; gap: 20px; flex-wrap: wrap;
+  opacity: 0; animation: fadeUp .9s ease forwards .8s;
+}
+.btn-primary {
+  font-family: var(--mono); font-size: 18px;
+  letter-spacing: .12em; text-transform: uppercase;
+  padding: 16px 36px;
+  background: var(--accent); color: #fff;
+  border: 1px solid var(--accent); cursor: none;
+  transition: background .25s, color .25s;
+}
+.btn-primary:hover { background: transparent; color: var(--accent); }
+.btn-ghost {
+  font-family: var(--mono); font-size: 18px;
+  letter-spacing: .12em; text-transform: uppercase;
+  padding: 16px 36px;
+  background: transparent; color: var(--text-muted);
+  border: 1px solid var(--border2); cursor: none;
+  transition: border-color .25s, color .25s;
+}
+.btn-ghost:hover { border-color: var(--text-muted); color: var(--text); }
+.hero-stats {
+  position: absolute; right: 48px; bottom: 100px;
+  display: flex; flex-direction: column; gap: 28px;
+  opacity: 0; animation: fadeIn 1s ease forwards 1s;
+}
+.stat { text-align: right; }
+.stat-num { font-family: var(--display); font-size: 44px; line-height: 1; color: var(--text); }
+.stat-label {
+  font-family: var(--mono); font-size: 15px;
+  letter-spacing: .15em; text-transform: uppercase; color: var(--text-muted);
+}
+.scroll-hint {
+  position: absolute; bottom: 36px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  opacity: 0; animation: fadeIn 1s ease forwards 1.4s;
+}
+.scroll-hint span {
+  font-family: var(--mono); font-size: 13px;
+  letter-spacing: .2em; text-transform: uppercase; color: var(--text-faint);
+}
+.scroll-line {
+  width: 1px; height: 40px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+  animation: scrollPulse 2s ease infinite;
+}
+
+/* ─── ABOUT ──────────────────────────────────────────── */
+#about {
+  border-top: 1px solid var(--border);
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: start;
+}
+.about-text p { margin-bottom: 20px; line-height: 1.8; }
+.about-text .highlight { color: var(--accent); font-style: italic; }
+.about-photo {
+  width: 150px; height: 150px;
+  object-fit: cover; object-position: center top;
+  filter: grayscale(55%) contrast(1.05);
+  border: 1px solid var(--border2);
+  margin-bottom: 28px; opacity: .82;
+  transition: filter .35s, opacity .35s;
+}
+.about-photo:hover { filter: grayscale(0%); opacity: 1; }
+.about-pills { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 40px; }
+.pill {
+  font-family: var(--mono); font-size: 15px;
+  letter-spacing: .1em; padding: 7px 14px;
+  border: 1px solid var(--border2); color: var(--text-muted);
+  text-transform: uppercase;
+  transition: border-color .2s, color .2s; cursor: default;
+}
+.pill:hover { border-color: var(--accent); color: var(--text); }
+.career-line { display: flex; flex-direction: column; }
+.career-item {
+  display: grid; grid-template-columns: 90px 1fr;
+  gap: 20px; padding: 15px 0;
+  border-bottom: 1px solid var(--border); position: relative;
+}
+.career-item::before {
+  content: ''; position: absolute;
+  left: 88px; top: 0; bottom: 0;
+  width: 1px; background: var(--border);
+}
+.career-item:last-child { border-bottom: none; }
+.career-year {
+  font-family: var(--mono); font-size: 13px;
+  letter-spacing: .06em; color: var(--text-muted);
+  padding-top: 3px; line-height: 1.4;
+}
+.career-role {
+  font-family: var(--mono); font-size: 15px;
+  color: var(--text); letter-spacing: .04em; margin-bottom: 3px;
+}
+.career-company {
+  font-family: var(--mono); font-size: 12px;
+  color: var(--accent); letter-spacing: .1em; text-transform: uppercase;
+}
+
+/* ─── CAROUSEL ───────────────────────────────────────── */
+.carousel { position: absolute; inset: 0; overflow: hidden; }
+.carousel-track {
+  display: flex; height: 100%;
+  transition: transform .4s cubic-bezier(.4,0,.2,1);
+  will-change: transform;
+}
+.carousel-item { flex: 0 0 100%; height: 100%; }
+.carousel-item img,
+.carousel-item video {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.carousel-btn {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  background: rgba(11,11,11,.72);
+  border: 1px solid var(--border2);
+  color: var(--text); width: 38px; height: 38px;
+  font-size: 22px; line-height: 1;
+  display: flex; align-items: center; justify-content: center;
+  cursor: none; z-index: 10;
+  transition: background .2s, border-color .2s; user-select: none;
+}
+.carousel-btn:hover { background: var(--accent); border-color: var(--accent); }
+.carousel-prev { left: 10px; }
+.carousel-next { right: 10px; }
+.carousel-dots {
+  position: absolute; bottom: 10px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; gap: 7px; z-index: 10;
+}
+.dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--text-muted); cursor: none;
+  transition: background .2s, transform .2s;
+}
+.dot.active { background: var(--accent); transform: scale(1.3); }
+
+/* ─── PROJECTS ───────────────────────────────────────── */
+#projects { border-top: 1px solid var(--border); }
+.projects-grid {
+  display: grid; grid-template-columns: repeat(12, 1fr);
+  gap: 2px; margin-top: -20px;
+}
+.project-card {
+  background: var(--surface); border: 1px solid var(--border);
+  overflow: hidden; position: relative; cursor: none;
+  opacity: 0; transform: translateY(24px);
+  transition: border-color .3s, opacity .5s ease, transform .5s ease;
+}
+.project-card.visible { opacity: 1; transform: none; }
+.project-card:hover { border-color: var(--accent); }
+.project-card:hover .card-accent-line { width: 100%; }
+.card-accent-line {
+  position: absolute; bottom: 0; left: 0;
+  height: 2px; width: 0;
+  background: var(--accent); transition: width .4s ease;
+}
+.project-card:nth-child(1) { grid-column: span 7; }
+.project-card:nth-child(2) { grid-column: span 5; }
+.project-card:nth-child(3) { grid-column: span 5; }
+.project-card:nth-child(4) { grid-column: span 7; }
+.project-card:nth-child(5) { grid-column: span 6; }
+.project-card:nth-child(6) { grid-column: span 6; }
+.project-card:nth-child(7) { grid-column: span 5; }
+.project-card:nth-child(8) { grid-column: span 7; }
+
+.card-media {
+  width: 100%; aspect-ratio: 16/9;
+  background: var(--surface2);
+  position: relative; overflow: hidden;
+}
+.card-media > img,
+.card-media > video {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; object-fit: cover;
+}
+.card-body { padding: 22px 26px 26px; }
+.card-meta {
+  display: flex; justify-content: space-between;
+  align-items: flex-start; margin-bottom: 12px;
+}
+.card-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.tag {
+  font-family: var(--mono); font-size: 13px;
+  letter-spacing: .1em; text-transform: uppercase;
+  padding: 4px 9px;
+  background: var(--surface3); color: var(--text-muted);
+  border: 1px solid var(--border);
+}
+.tag.accent { background: var(--accent-glow); color: var(--accent); border-color: var(--accent-dim); }
+.card-year {
+  font-family: var(--mono); font-size: 14px;
+  color: var(--text-faint); letter-spacing: .1em; white-space: nowrap;
+}
+.card-title {
+  font-family: var(--display);
+  font-size: clamp(18px, 2.2vw, 26px);
+  letter-spacing: .04em; line-height: 1.1;
+  color: var(--text); margin-bottom: 10px;
+}
+.card-desc {
+  font-family: var(--serif); font-size: 15px;
+  font-weight: 300; line-height: 1.65; color: var(--text-muted);
+}
+.card-company {
+  display: inline-block; font-family: var(--mono); font-size: 13px;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--accent); margin-top: 14px;
+}
+
+/* ─── SKILLS ─────────────────────────────────────────── */
+#skills { border-top: 1px solid var(--border); }
+.skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+.skills-col h3 {
+  font-family: var(--mono); font-size: 16px;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 28px; margin-top: 36px;
+  padding-bottom: 10px; border-bottom: 1px solid var(--border);
+}
+.skills-col h3:first-child { margin-top: 0; }
+.skill-item { margin-bottom: 22px; }
+.skill-top { display: flex; justify-content: space-between; margin-bottom: 8px; }
+.skill-name { font-family: var(--mono); font-size: 17px; letter-spacing: .06em; color: var(--text); }
+.skill-level { font-family: var(--mono); font-size: 14px; color: var(--text-muted); }
+.skill-bar { height: 2px; background: var(--border2); overflow: hidden; }
+.skill-fill {
+  height: 100%; background: var(--accent);
+  width: 0; transition: width 1.1s ease;
+}
+.skill-item.visible .skill-fill { width: var(--w); }
+.tools-list { display: flex; flex-wrap: wrap; gap: 10px; }
+.tool-badge {
+  font-family: var(--mono); font-size: 15px;
+  letter-spacing: .08em; padding: 8px 14px;
+  border: 1px solid var(--border2); color: var(--text-muted);
+  text-transform: uppercase;
+  transition: border-color .2s, color .2s; cursor: default;
+}
+.tool-badge:hover { border-color: var(--accent); color: var(--text); }
+
+/* ─── CONTACT ────────────────────────────────────────── */
+#contact {
+  border-top: 1px solid var(--border);
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center;
+}
+.contact-tagline {
+  font-size: clamp(20px, 3vw, 32px); font-weight: 300;
+  line-height: 1.5; color: var(--text); margin-bottom: 40px;
+}
+.contact-tagline em { color: var(--accent); font-style: italic; }
+.contact-links { display: flex; flex-direction: column; gap: 14px; }
+.contact-link {
+  display: flex; align-items: center; gap: 16px;
+  padding: 18px 20px; border: 1px solid var(--border);
+  transition: border-color .25s, background .25s; cursor: none;
+}
+.contact-link:hover { border-color: var(--accent); background: var(--accent-glow); }
+.contact-link-icon { font-size: 18px; width: 24px; text-align: center; }
+.contact-link-label {
+  font-family: var(--mono); font-size: 13px;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--text-muted); margin-bottom: 3px;
+}
+.contact-link-val {
+  font-family: var(--mono); font-size: 17px;
+  color: var(--text); letter-spacing: .04em;
+}
+.contact-right {
+  padding: 48px; border: 1px solid var(--border); background: var(--surface);
+}
+.contact-note {
+  font-size: 17px; font-weight: 300; line-height: 1.85;
+  color: var(--text-muted); font-style: italic;
+}
+.contact-note strong { font-style: normal; font-weight: 600; color: var(--text); }
+
+/* ─── FOOTER ─────────────────────────────────────────── */
+footer {
+  padding: 30px 48px; border-top: 1px solid var(--border);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.footer-left, .footer-right {
+  font-family: var(--mono); font-size: 14px;
+  letter-spacing: .1em; color: var(--text-faint); text-transform: uppercase;
+}
+
+/* ─── REVEAL ─────────────────────────────────────────── */
+.reveal {
+  opacity: 0; transform: translateY(28px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.reveal.visible { opacity: 1; transform: none; }
+.reveal-delay-1 { transition-delay: .1s; }
+.reveal-delay-2 { transition-delay: .2s; }
+.reveal-delay-3 { transition-delay: .3s; }
+
+/* ─── KEYFRAMES ──────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes fadeIn {
+  from { opacity: 0; } to { opacity: 1; }
+}
+@keyframes scrollPulse {
+  0%,100% { opacity: .3; } 50% { opacity: 1; }
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────────── */
+@media (max-width: 900px) {
+  nav { padding: 16px 24px; }
+  .nav-links { display: none; }
+  section { padding: 80px 24px; }
+  #hero { padding: 0 24px 80px; }
+  .hero-stats { display: none; }
+  #about { grid-template-columns: 1fr; gap: 40px; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .project-card:nth-child(n) { grid-column: span 1; }
+  .skills-grid { grid-template-columns: 1fr; gap: 40px; }
+  #contact { grid-template-columns: 1fr; gap: 40px; }
+  footer { flex-direction: column; gap: 10px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- ── NAV ── -->
+<nav id="nav">
+  <div class="nav-logo">GG<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">Обо мне</a></li>
+    <li><a href="#projects">Проекты</a></li>
+    <li><a href="#skills">Навыки</a></li>
+    <li><a href="#contact">Контакт</a></li>
+  </ul>
+</nav>
+
+<!-- ════════ HERO ════════ -->
+<section id="hero">
+  <div class="hero-bg-lines"></div>
+  <div class="hero-top-tag">Инженер-конструктор · МАИ · Москва</div>
+  <div class="hero-name">Георгий<em>Гущин</em></div>
+  <p class="hero-desc">
+    Проектировал тепловую изоляцию для ракет космического назначения.<br>
+    Сейчас — составные части для беспилотников.<br>
+    <strong>Шесть лет, три отрасли, один подход: разобраться до конца.</strong>
+  </p>
+  <div class="hero-actions">
+    <a href="#projects" class="btn-primary">Смотреть проекты</a>
+    <a href="#contact" class="btn-ghost">Написать мне</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">6+</div>
+      <div class="stat-label">лет опыта</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">1000+</div>
+      <div class="stat-label">КД-документов</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">3</div>
+      <div class="stat-label">отрасли</div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ════════ ABOUT ════════ -->
+<section id="about">
+  <div class="left">
+    <div class="section-label reveal">О себе</div>
+    <h2 class="reveal reveal-delay-1">ВНИМАТЕЛЬНО<br>И СПОКОЙНО</h2>
+    <div class="about-text reveal reveal-delay-2">
+      <p>Получая задачу, я сразу начинаю её раскручивать. Рассматриваю со всех сторон, пытаюсь понять, как части влияют друг на друга и на внешние системы — потом структурирую и приступаю. Это не методика, это просто как я устроен.</p>
+      <p>Шесть лет назад вышел из МАИ и попал в КБ «Салют» — тепловая изоляция ракет-носителей, Байконур, модуль <span class="highlight">«Наука»</span>. Потом были биореакторы, CIP-мойки, эстакады для железнодорожных составов, пропеллеры для лёгкой авиации. Сейчас — закрылки беспилотников. Кажется несвязанным. На самом деле это одна и та же история: взять задачу, разобраться полностью, сделать правильно.</p>
+      <p>Параллельно осваиваю AI-инструменты: собрал телеграм-бота с автоматической обработкой форм через Make и OpenRouter. Сделал ремонт в квартире по собственным 3D-моделям. Не жду разрешения задать неудобный вопрос — даже если его нужно задавать руководителю.</p>
+    </div>
+  </div>
+
+  <div class="about-right reveal reveal-delay-3">
+    <!-- Фото: файл Я.jpg должен лежать в папке media/ рядом с portfolio.html -->
+    <img src="media/Я.jpg" alt="Георгий Гущин" class="about-photo">
+
+    <div class="about-pills">
+      <span class="pill">SolidWorks</span>
+      <span class="pill">NX Unigraphics</span>
+      <span class="pill">КОМПАС-3D</span>
+      <span class="pill">ЕСКД</span>
+      <span class="pill">Аэрокосмос</span>
+      <span class="pill">БПЛА</span>
+      <span class="pill">Биотех</span>
+      <span class="pill">Make + AI</span>
+    </div>
+
+    <div class="career-line">
+      <div class="career-item">
+        <div class="career-year">2025–н.в.</div>
+        <div>
+          <div class="career-role">Инженер-конструктор</div>
+          <div class="career-company">Транспорт Будущего</div>
+        </div>
+      </div>
+      <div class="career-item">
+        <div class="career-year">2023–2025</div>
+        <div>
+          <div class="career-role">Инженер-конструктор</div>
+          <div class="career-company">Прометаин</div>
+        </div>
+      </div>
+      <div class="career-item">
+        <div class="career-year">2022–2023</div>
+        <div>
+          <div class="career-role">Инженер-конструктор 1 кат.</div>
+          <div class="career-company">КБ «Салют» / ГКНПЦ Хруничев</div>
+        </div>
+      </div>
+      <div class="career-item">
+        <div class="career-year">2021–2022</div>
+        <div>
+          <div class="career-role">Инженер-конструктор 2 кат.</div>
+          <div class="career-company">КБ «Салют» / ГКНПЦ Хруничев</div>
+        </div>
+      </div>
+      <div class="career-item">
+        <div class="career-year">2020–2021</div>
+        <div>
+          <div class="career-role">Инженер-конструктор 3 кат.</div>
+          <div class="career-company">КБ «Салют» / ГКНПЦ Хруничев</div>
+        </div>
+      </div>
+      <div class="career-item">
+        <div class="career-year">2020</div>
+        <div>
+          <div class="career-role">Специалитет, инженер</div>
+          <div class="career-company">МАИ · Аэрокосмический ф-т</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ PROJECTS ════════ -->
+<section id="projects">
+  <div class="section-label reveal">Проекты</div>
+  <h2 class="reveal reveal-delay-1">Что<br>я делал</h2>
+
+  <div class="projects-grid">
+
+    <!-- 1. Тепловая изоляция: карусель 3 картинки -->
+    <div class="project-card">
+      <div class="card-media">
+        <div class="carousel">
+          <div class="carousel-track">
+            <div class="carousel-item"><img src="media/Головной обтекатель (теплоизоляция).png" alt="Головной обтекатель"></div>
+            <div class="carousel-item"><img src="media/Теплоизоляция (1).png" alt="Теплоизоляция 1"></div>
+            <div class="carousel-item"><img src="media/Теплоизоляция (2).png" alt="Теплоизоляция 2"></div>
+          </div>
+          <button class="carousel-btn carousel-prev">&#8249;</button>
+          <button class="carousel-btn carousel-next">&#8250;</button>
+          <div class="carousel-dots">
+            <span class="dot active"></span><span class="dot"></span><span class="dot"></span>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-meta">
+          <div class="card-tags"><span class="tag accent">Ракетостроение</span><span class="tag">Тепловая защита</span><span class="tag">ЕСКД</span></div>
+          <span class="card-year">2020–23</span>
+        </div>
+        <div class="card-title">Тепловая изоляция ракет-носителей</div>
+        <div class="card-desc">Головные обтекатели, межбаковые и промежуточные отсеки. Разработка геометрии пакета, состава и способов монтажа. В 2021 году — заводские испытания модуля «Наука» на Байконуре.</div>
+        <span class="card-company">КБ «Салют» / ГКНПЦ Хруничев</span>
+      </div>
+      <div class="card-accent-line"></div>
+    </div>
+
+    <!-- 2. Обтекатель двигателя: одна картинка -->
+    <div class="project-card">
+      <div class="card-media">
+        <img src="media/рдтт.png" alt="Платформа и обтекатель двигателя торможения">
+      </div>
+      <div class="card-body">
+        <div class="card-meta">
+          <div class="card-tags"><span class="tag accent">Ракетостроение</span><span class="tag">Стеклопластик</span><span class="tag">Д16Т</span></div>
+          <span class="card-year">2020–23</span>
+        </div>
+        <div class="card-title">Платформа и обтекатель двигателя торможения</div>
+        <div class="card-desc">Платформа из Д16Т, формованный стеклопластиковый обтекатель со сложной геометрией тепловой изоляции и тепловой защиты снаружи.</div>
+        <span class="card-company">КБ «Салют» / ГКНПЦ Хруничев</span>
+      </div>
+      <div class="card-accent-line"></div>
+    </div>
+
+    <!-- 3. Биореактор: карусель 2 картинки + видео -->
+    <div class="project-card">
+      <div class="card-media">
+        <div class="carousel">
+          <div class="carousel-track">
+            <div class="carousel-item"><img src="media/Реактор (1).png" alt="Биореактор вид 1"></div>
+            <div class="carousel-item"><img src="media/Реактор (2).png" alt="Биореактор вид 2"></div>
+            <div class="carousel-item">
+              <video loop muted playsinline><source src="media/Биореактор.mp4" type="video/mp4"></video>
+            </div>
+          </div>
+          <button class="carousel-btn carousel-prev">&#8249;</button>
+          <button class="carousel-btn carousel-next">&#8250;</button>
+          <div class="carousel-dots">
+            <span class="dot active"></span><span class="dot"></span><span class="dot"></span>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-meta">
+          <div class="card-tags"><span class="tag accent">Биотех</span><span class="tag">SolidWorks</span><span class="tag">500+ КД</span></div>
+          <span class="card-year">2023–25</span>
+        </div>
+        <div class="card-title">Биореактор</div>
+        <div class="card-desc">Полная разработка 3D-сборки — от общего вида на бумаге. Более 500 конструкторских документов по ЕСКД, ГОСТам и отраслевым стандартам.</div>
+        <span class="card-company">Прометаин</span>
+      </div>
+      <div class="card-accent-line"></div>
+    </div>
+
+    <!-- 4. CIP-мойка: одно видео -->
+    <div class="project-card">
+      <div class="card-media">
+        <video autoplay loop muted playsinline>
+          <source src="media/CIP-мойка.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="card-body">
+        <div class="card-meta">
+          <div class="card-tags"><span class="tag accent">Проектирование с нуля</span><span class="tag">SolidWorks</span></div>
+          <span class="card-year">2023–25</span>
+        </div>
+        <div class="card-title">CIP-мойка промышленного оборудования</div>
+        <div class="card-desc">Руководитель предложил не закупать — а разработать. Анализ аналогов, тепловой расчёт, подбор компонентов, запросы КП у поставщиков, 3D-модель и полный комплект КД.</div>
+        <span class="card-company">Прометаин</span>
+      </div>
+      <div class="card-accent-line"></div>
+    </div>
+
+    <!-- 5. Эстакада: одно видео -->
+    <div class="project-card">
+      <div class="card-media">
+        <video autoplay loop muted playsinline>
+          <source src="media/ЭСТАКАДА.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="card-body">
+        <div class="card-meta">
+          <div class="card-tags"><span class="tag">Строительные конструкции</span><span class="tag">SolidWorks</span></div>
+          <span class="card-year">2023–25</span>
+        </div>
+        <div class="card-title">Эстакада обслуживания ЖД-составов</div>
+        <div class="card-desc">Проектирование по альбомам типовых конструкций и профильным отраслевым стандартам. Трёхмерная модель и КД.</div>
+        <span class="card-company">Прометаин</span>
+      </div>
+      <div class="card-accent-line"></div>
+    </div>
+
+    <!-- 6. Закрылок БПЛА: карусель картинка + видео -->
+    <div class="project-card">
+      <div class="card-media">
+        <div class="carousel">
+          <div class="carousel-track">
+            <div class="carousel-item"><img src="media/Закрылок 2.png" alt="Закрылок БПЛА"></div>
+            <div class="carousel-item">
+              <video loop muted playsinline><source src="media/Закрылок 2.mp4" type="video/mp4"></video>
+            </div>
+          </div>
+          <button class="carousel-btn carousel-prev">&#8249;</button>
+          <button class="carousel-btn carousel-next">&#8250;</button>
+          <div class="carousel-dots">
+            <span class="dot active"></span><span class="dot"></span>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-meta">
+          <div class="card-tags"><span class="tag accent">БПЛА</span><span class="tag">NX</span><span class="tag">Кинематика</span></div>
+          <span class="card-year">2025–н.в.</span>
+        </div>
+        <div class="card-title">Закрылок беспилотного ЛА</div>
+        <div class="card-desc">Моделирование в NX, кинематическая схема управления закрылком. В процессе разработки выявил конструктивную неувязку в теоретическом контуре — решение согласовано с аэродинамиками.</div>
+        <span class="card-company">Транспорт Будущего</span>
+      </div>
+      <div class="card-accent-line"></div>
+    </div>
+
+    <!-- 7. Пропеллер: карусель 2 картинки + видео -->
+    <div class="project-card">
+      <div class="card-media">
+        <div class="carousel">
+          <div class="carousel-track">
+            <div class="carousel-item"><img src="media/propeller 085.png" alt="Пропеллер вид 1"></div>
+            <div class="carousel-item"><img src="media/propeller.jpg" alt="Пропеллер вид 2"></div>
+            <div class="carousel-item">
+              <video loop muted playsinline><source src="media/MTV-6 Proprller.mp4" type="video/mp4"></video>
+            </div>
+          </div>
+          <button class="carousel-btn carousel-prev">&#8249;</button>
+          <button class="carousel-btn carousel-next">&#8250;</button>
+          <div class="carousel-dots">
+            <span class="dot active"></span><span class="dot"></span><span class="dot"></span>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-meta">
+          <div class="card-tags"><span class="tag accent">Фриланс</span><span class="tag">SolidWorks</span><span class="tag">Авиация</span></div>
+          <span class="card-year">2024</span>
+        </div>
+        <div class="card-title">Пропеллер лёгкомоторного самолёта</div>
+        <div class="card-desc">Частный заказ. У заказчика было только наименование. Самостоятельно нашёл стандарты и открытую документацию изготовителя. Создал 3D-модели и анимацию движения по открытым данным.</div>
+        <span class="card-company">Частный заказ</span>
+      </div>
+      <div class="card-accent-line"></div>
+    </div>
+
+    <!-- 8. Чемодан: карусель 2 картинки + видео -->
+    <div class="project-card">
+      <div class="card-media">
+        <div class="carousel">
+          <div class="carousel-track">
+            <div class="carousel-item"><img src="media/Коробка закрыта.png" alt="Чемодан закрыт"></div>
+            <div class="carousel-item"><img src="media/Коробка открыта.png" alt="Чемодан открыт"></div>
+            <div class="carousel-item">
+              <video loop muted playsinline><source src="media/ЯС.48Б.П-00-000 Ящик снабжения.mp4" type="video/mp4"></video>
+            </div>
+          </div>
+          <button class="carousel-btn carousel-prev">&#8249;</button>
+          <button class="carousel-btn carousel-next">&#8250;</button>
+          <div class="carousel-dots">
+            <span class="dot active"></span><span class="dot"></span><span class="dot"></span>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-meta">
+          <div class="card-tags"><span class="tag">Личный проект</span><span class="tag">SolidWorks</span><span class="tag">Прототип</span></div>
+          <span class="card-year">2024</span>
+        </div>
+        <div class="card-title">Чемодан для пневматического пистолета</div>
+        <div class="card-desc">В продаже не было того, что нужно — сделал сам. SolidWorks: 3D-модели, выкройки вставок. Заказал раскрой на станке, собрал опытный образец.</div>
+        <span class="card-company">Личный проект</span>
+      </div>
+      <div class="card-accent-line"></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════ SKILLS ════════ -->
+<section id="skills">
+  <div class="section-label reveal">Навыки</div>
+  <h2 class="reveal reveal-delay-1">Инструменты<br>и стандарты</h2>
+
+  <div class="skills-grid">
+    <div class="skills-col reveal reveal-delay-2">
+      <h3>CAD и 3D-моделирование</h3>
+
+      <div class="skill-item" style="--w:95%">
+        <div class="skill-top"><span class="skill-name">SolidWorks</span><span class="skill-level">Уверенно</span></div>
+        <div class="skill-bar"><div class="skill-fill"></div></div>
+      </div>
+      <div class="skill-item" style="--w:80%">
+        <div class="skill-top"><span class="skill-name">NX Unigraphics</span><span class="skill-level">Уверенно</span></div>
+        <div class="skill-bar"><div class="skill-fill"></div></div>
+      </div>
+      <div class="skill-item" style="--w:68%">
+        <div class="skill-top"><span class="skill-name">КОМПАС-3D</span><span class="skill-level">Уверенно</span></div>
+        <div class="skill-bar"><div class="skill-fill"></div></div>
+      </div>
+      <div class="skill-item" style="--w:57%">
+        <div class="skill-top"><span class="skill-name">AutoCAD</span><span class="skill-level">Уверенно</span></div>
+        <div class="skill-bar"><div class="skill-fill"></div></div>
+      </div>
+      <div class="skill-item" style="--w:40%">
+        <div class="skill-top"><span class="skill-name">Solid Edge</span><span class="skill-level">Базово</span></div>
+        <div class="skill-bar"><div class="skill-fill"></div></div>
+      </div>
+      <div class="skill-item" style="--w:40%">
+        <div class="skill-top"><span class="skill-name">Creo (PTC)</span><span class="skill-level">Базово</span></div>
+        <div class="skill-bar"><div class="skill-fill"></div></div>
+      </div>
+
+      <h3>Нормативная база</h3>
+      <div class="tools-list">
+        <span class="tool-badge">ЕСКД</span>
+        <span class="tool-badge">Авиационные ОСТы</span>
+        <span class="tool-badge">Нефтегазовые стандарты</span>
+        <span class="tool-badge">ГОСТ</span>
+        <span class="tool-badge">ТЗ / ТУ</span>
+        <span class="tool-badge">Авторский надзор</span>
+      </div>
+    </div>
+
+    <div class="skills-col reveal reveal-delay-3">
+      <h3>Дополнительно</h3>
+      <div class="tools-list">
+        <span class="tool-badge">Adobe Photoshop</span>
+        <span class="tool-badge">Make (Integromat)</span>
+        <span class="tool-badge">Telegram Bot API</span>
+        <span class="tool-badge">OpenRouter / AI</span>
+        <span class="tool-badge">Tally Forms</span>
+        <span class="tool-badge">MS Office</span>
+      </div>
+
+      <h3>Отрасли</h3>
+      <div class="tools-list">
+        <span class="tool-badge">Ракетостроение</span>
+        <span class="tool-badge">БПЛА</span>
+        <span class="tool-badge">Биотехнологии</span>
+        <span class="tool-badge">Лёгкая авиация</span>
+        <span class="tool-badge">Пром. оборудование</span>
+      </div>
+
+      <h3>Подход к работе</h3>
+      <div class="tools-list">
+        <span class="tool-badge">Структурирование задач</span>
+        <span class="tool-badge">Поиск нормативов</span>
+        <span class="tool-badge">Работа с поставщиками</span>
+        <span class="tool-badge">Командировки</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ CONTACT ════════ -->
+<section id="contact">
+  <div class="contact-left reveal">
+    <div class="section-label">Контакт</div>
+    <p class="contact-tagline">
+      Интересная задача?<br>
+      <em>Пишите — разберёмся.</em>
+    </p>
+    <div class="contact-links">
+      <a href="mailto:georgygushin@gmail.com" class="contact-link">
+        <span class="contact-link-icon">✉</span>
+        <div>
+          <div class="contact-link-label">Email</div>
+          <div class="contact-link-val">georgygushin@gmail.com</div>
+        </div>
+      </a>
+      <a href="tel:+79254362286" class="contact-link">
+        <span class="contact-link-icon">☎</span>
+        <div>
+          <div class="contact-link-label">Телефон</div>
+          <div class="contact-link-val">+7 (925) 436-22-86</div>
+        </div>
+      </a>
+      <a href="https://vk.com/georgy_gushin" target="_blank" class="contact-link">
+        <span class="contact-link-icon">⬡</span>
+        <div>
+          <div class="contact-link-label">VK</div>
+          <div class="contact-link-val">vk.com/georgy_gushin</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="contact-right reveal reveal-delay-2">
+    <p class="contact-note">
+      В июне 2026 года возвращаюсь в <strong>Москву</strong>, открыт к командировкам.<br><br>
+      Интересуют задачи в направлении <strong>беспилотных систем</strong>, <strong>роботизированной техники</strong> и сложного промышленного оборудования.<br><br>
+      Рассматриваю как <strong>штатную позицию</strong>, так и <strong>проектную работу</strong>.
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-left">© 2026 Гущин Георгий Андреевич</div>
+  <div class="footer-right">Инженер-конструктор · МАИ · SolidWorks · NX</div>
+</footer>
+
+<script>
+/* ── Cursor ── */
+const cursor = document.getElementById('cursor');
+const ring   = document.getElementById('cursorRing');
+let mx = 0, my = 0, rx = 0, ry = 0;
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+(function tick() {
+  cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
+  rx += (mx - rx) * .12; ry += (my - ry) * .12;
+  ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+  requestAnimationFrame(tick);
+})();
+
+/* ── Nav ── */
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
+});
+
+/* ── Reveal ── */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+}, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.reveal, .skill-item').forEach(el => io.observe(el));
+
+/* ── Project cards stagger ── */
+const co = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+      co.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.04 });
+document.querySelectorAll('.project-card').forEach(c => co.observe(c));
+
+/* ── Carousels ── */
+document.querySelectorAll('.carousel').forEach(el => {
+  const track = el.querySelector('.carousel-track');
+  const items = el.querySelectorAll('.carousel-item');
+  const dots  = el.querySelectorAll('.dot');
+  const prev  = el.querySelector('.carousel-prev');
+  const next  = el.querySelector('.carousel-next');
+  if (items.length <= 1) { prev && prev.remove(); next && next.remove(); return; }
+  let cur = 0;
+
+  function go(n) {
+    const cv = items[cur].querySelector('video');
+    if (cv) { cv.pause(); cv.currentTime = 0; }
+    cur = (n + items.length) % items.length;
+    track.style.transform = `translateX(-${cur * 100}%)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === cur));
+    const nv = items[cur].querySelector('video');
+    if (nv) nv.play().catch(() => {});
+  }
+
+  prev && prev.addEventListener('click', () => go(cur - 1));
+  next && next.addEventListener('click', () => go(cur + 1));
+  dots.forEach((d, i) => d.addEventListener('click', () => go(i)));
+});
+</script>
+</body>
+</html>
