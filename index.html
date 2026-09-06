@@ -3,7 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Георгий Гущин — Инженер-конструктор</title>
+<title>Георгий Гущин - Инженер-конструктор</title>
+<meta name="description" content="Георгий Гущин - инженер-конструктор полного цикла: рабочая КД по ЕСКД, SolidWorks, Siemens NX, SolidWorks Simulation. Ракетно-космическая техника, промышленное оборудование, беспилотники. Задачи в беспилотных системах и сложном промышленном оборудовании.">
+<meta name="author" content="Гущин Георгий Андреевич">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:url" content="https://georgygushin-crypto.github.io/portfolio/">
+<meta property="og:title" content="Георгий Гущин - Инженер-конструктор">
+<meta property="og:description" content="Инженер-конструктор полного цикла. 1300+ комплектов КД, три отрасли: ракетно-космическая техника, промышленное оборудование, беспилотники.">
+<meta property="og:image" content="https://georgygushin-crypto.github.io/portfolio/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Георгий Гущин - инженер-конструктор">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Георгий Гущин - Инженер-конструктор">
+<meta name="twitter:description" content="Инженер-конструктор полного цикла. 1300+ комплектов КД, три отрасли: ракетно-космическая техника, промышленное оборудование, беспилотники.">
+<meta name="twitter:image" content="https://georgygushin-crypto.github.io/portfolio/og-cover.png">
+
+<!-- Favicon (инлайновый SVG) -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20fill='%230B0B0B'/%3E%3Ctext%20x='16'%20y='23'%20font-family='Arial,sans-serif'%20font-size='17'%20font-weight='bold'%20fill='%238C1F2E'%20text-anchor='middle'%3EGG%3C/text%3E%3C/svg%3E">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@300;400;500&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
 <style>
@@ -38,28 +61,9 @@ body {
   font-weight: 300;
   line-height: 1.7;
   overflow-x: hidden;
-  cursor: none;
 }
 a { color: inherit; text-decoration: none; }
 img, video { display: block; max-width: 100%; }
-
-/* ─── CURSOR ─────────────────────────────────────────── */
-.cursor {
-  position: fixed; top: 0; left: 0;
-  width: 10px; height: 10px;
-  background: var(--accent); border-radius: 50%;
-  pointer-events: none; z-index: 9999;
-  transform: translate(-50%,-50%);
-  transition: width .2s, height .2s;
-}
-.cursor-ring {
-  position: fixed; top: 0; left: 0;
-  width: 34px; height: 34px;
-  border: 1px solid rgba(140,31,46,.5); border-radius: 50%;
-  pointer-events: none; z-index: 9998;
-  transform: translate(-50%,-50%);
-  transition: transform .18s ease, width .3s, height .3s;
-}
 
 /* ─── GRAIN ──────────────────────────────────────────── */
 body::before {
@@ -98,7 +102,7 @@ nav.scrolled {
   font-family: var(--mono); font-size: 17px;
   letter-spacing: .12em; text-transform: uppercase;
   color: var(--text-muted); transition: color .2s;
-  position: relative; cursor: none;
+  position: relative; cursor: pointer;
 }
 .nav-links a::after {
   content: ''; position: absolute; bottom: -2px; left: 0;
@@ -151,7 +155,7 @@ h2 {
   opacity: 0; animation: fadeUp .8s ease forwards .2s;
 }
 .hero-name {
-  font-family: var(--display);
+  font-family: var(--display); font-weight: 400;
   font-size: clamp(64px, 11vw, 160px);
   line-height: .9; letter-spacing: .02em;
   color: var(--text); margin-bottom: 40px;
@@ -159,7 +163,7 @@ h2 {
 }
 .hero-name em { display: block; color: var(--accent); font-style: normal; }
 .hero-desc {
-  max-width: 640px;
+  max-width: 660px;
   font-size: clamp(17px, 2vw, 22px);
   font-weight: 300; line-height: 1.65;
   color: var(--text); margin-bottom: 48px;
@@ -175,7 +179,7 @@ h2 {
   letter-spacing: .12em; text-transform: uppercase;
   padding: 16px 36px;
   background: var(--accent); color: #fff;
-  border: 1px solid var(--accent); cursor: none;
+  border: 1px solid var(--accent); cursor: pointer;
   transition: background .25s, color .25s;
 }
 .btn-primary:hover { background: transparent; color: var(--accent); }
@@ -184,7 +188,7 @@ h2 {
   letter-spacing: .12em; text-transform: uppercase;
   padding: 16px 36px;
   background: transparent; color: var(--text-muted);
-  border: 1px solid var(--border2); cursor: none;
+  border: 1px solid var(--border2); cursor: pointer;
   transition: border-color .25s, color .25s;
 }
 .btn-ghost:hover { border-color: var(--text-muted); color: var(--text); }
@@ -241,30 +245,49 @@ h2 {
   transition: border-color .2s, color .2s; cursor: default;
 }
 .pill:hover { border-color: var(--accent); color: var(--text); }
+
+/* ─── CAREER TIMELINE (крупнее, вариант A) ───────────── */
 .career-line { display: flex; flex-direction: column; }
+.career-parallel {
+  position: relative;
+  border-left: 2px solid var(--accent-dim);
+  padding-left: 20px;
+  margin-bottom: 10px;
+}
+.career-parallel-label {
+  font-family: var(--mono); font-size: 13px; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--accent);
+  margin-bottom: 4px;
+}
 .career-item {
-  display: grid; grid-template-columns: 90px 1fr;
-  gap: 20px; padding: 15px 0;
-  border-bottom: 1px solid var(--border); position: relative;
+  display: grid; grid-template-columns: 116px 1fr;
+  gap: 24px; padding: 18px 0;
+  border-bottom: 1px solid var(--border);
 }
-.career-item::before {
-  content: ''; position: absolute;
-  left: 88px; top: 0; bottom: 0;
-  width: 1px; background: var(--border);
-}
-.career-item:last-child { border-bottom: none; }
+.career-parallel .career-item:last-child { border-bottom: none; }
+.career-line > .career-item:last-child { border-bottom: none; }
 .career-year {
-  font-family: var(--mono); font-size: 13px;
-  letter-spacing: .06em; color: var(--text-muted);
+  font-family: var(--mono); font-size: 15px;
+  letter-spacing: .04em; color: var(--text-muted);
   padding-top: 3px; line-height: 1.4;
 }
 .career-role {
-  font-family: var(--mono); font-size: 15px;
-  color: var(--text); letter-spacing: .04em; margin-bottom: 3px;
+  font-family: var(--mono); font-size: 18px;
+  color: var(--text); letter-spacing: .03em; margin-bottom: 4px; line-height: 1.35;
 }
 .career-company {
-  font-family: var(--mono); font-size: 12px;
+  font-family: var(--mono); font-size: 13px;
   color: var(--accent); letter-spacing: .1em; text-transform: uppercase;
+}
+.career-tag {
+  display: inline-block; margin-top: 7px;
+  font-family: var(--mono); font-size: 12px; letter-spacing: .08em;
+  color: var(--text-faint); text-transform: uppercase;
+}
+.career-note {
+  font-family: var(--mono); font-size: 13px;
+  color: var(--text-muted); letter-spacing: .03em;
+  margin-top: 18px; line-height: 1.6;
 }
 
 /* ─── CAROUSEL ───────────────────────────────────────── */
@@ -286,7 +309,7 @@ h2 {
   color: var(--text); width: 38px; height: 38px;
   font-size: 22px; line-height: 1;
   display: flex; align-items: center; justify-content: center;
-  cursor: none; z-index: 10;
+  cursor: pointer; z-index: 10;
   transition: background .2s, border-color .2s; user-select: none;
 }
 .carousel-btn:hover { background: var(--accent); border-color: var(--accent); }
@@ -299,7 +322,7 @@ h2 {
 }
 .dot {
   width: 7px; height: 7px; border-radius: 50%;
-  background: var(--text-muted); cursor: none;
+  background: var(--text-muted); cursor: pointer;
   transition: background .2s, transform .2s;
 }
 .dot.active { background: var(--accent); transform: scale(1.3); }
@@ -312,7 +335,7 @@ h2 {
 }
 .project-card {
   background: var(--surface); border: 1px solid var(--border);
-  overflow: hidden; position: relative; cursor: none;
+  overflow: hidden; position: relative;
   opacity: 0; transform: translateY(24px);
   transition: border-color .3s, opacity .5s ease, transform .5s ease;
 }
@@ -330,8 +353,9 @@ h2 {
 .project-card:nth-child(4) { grid-column: span 7; }
 .project-card:nth-child(5) { grid-column: span 6; }
 .project-card:nth-child(6) { grid-column: span 6; }
-.project-card:nth-child(7) { grid-column: span 5; }
-.project-card:nth-child(8) { grid-column: span 7; }
+.project-card:nth-child(7) { grid-column: span 4; }
+.project-card:nth-child(8) { grid-column: span 4; }
+.project-card:nth-child(9) { grid-column: span 4; }
 
 .card-media {
   width: 100%; aspect-ratio: 16/9;
@@ -339,9 +363,10 @@ h2 {
   position: relative; overflow: hidden;
 }
 .card-media > img,
-.card-media > video {
+.card-media > video,
+.card-media > svg.card-svg {
   position: absolute; inset: 0;
-  width: 100%; height: 100%; object-fit: cover;
+  width: 100%; height: 100%; object-fit: cover; display: block;
 }
 .card-body { padding: 22px 26px 26px; }
 .card-meta {
@@ -362,7 +387,7 @@ h2 {
   color: var(--text-faint); letter-spacing: .1em; white-space: nowrap;
 }
 .card-title {
-  font-family: var(--display);
+  font-family: var(--display); font-weight: 400;
   font-size: clamp(18px, 2.2vw, 26px);
   letter-spacing: .04em; line-height: 1.1;
   color: var(--text); margin-bottom: 10px;
@@ -398,6 +423,11 @@ h2 {
   width: 0; transition: width 1.1s ease;
 }
 .skill-item.visible .skill-fill { width: var(--w); }
+.skills-note {
+  font-family: var(--mono); font-size: 13px;
+  color: var(--text-faint); letter-spacing: .04em;
+  margin: 6px 0 4px; line-height: 1.55;
+}
 .tools-list { display: flex; flex-wrap: wrap; gap: 10px; }
 .tool-badge {
   font-family: var(--mono); font-size: 15px;
@@ -423,7 +453,7 @@ h2 {
 .contact-link {
   display: flex; align-items: center; gap: 16px;
   padding: 18px 20px; border: 1px solid var(--border);
-  transition: border-color .25s, background .25s; cursor: none;
+  transition: border-color .25s, background .25s; cursor: pointer;
 }
 .contact-link:hover { border-color: var(--accent); background: var(--accent-glow); }
 .contact-link-icon { font-size: 18px; width: 24px; text-align: center; }
@@ -490,13 +520,15 @@ footer {
   .skills-grid { grid-template-columns: 1fr; gap: 40px; }
   #contact { grid-template-columns: 1fr; gap: 40px; }
   footer { flex-direction: column; gap: 10px; text-align: center; }
+  .career-item { grid-template-columns: 92px 1fr; gap: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+  html { scroll-behavior: auto; }
 }
 </style>
 </head>
 <body>
-
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
 
 <!-- ── NAV ── -->
 <nav id="nav">
@@ -513,15 +545,16 @@ footer {
 <section id="hero">
   <div class="hero-bg-lines"></div>
   <div class="hero-top-tag">Инженер-конструктор · МАИ · Москва</div>
-  <div class="hero-name">Георгий<em>Гущин</em></div>
+  <h1 class="hero-name">Георгий<em>Гущин</em></h1>
   <p class="hero-desc">
-    Проектировал тепловую изоляцию для ракет космического назначения.<br>
-    Сейчас — составные части для беспилотников.<br>
-    <strong>Шесть лет, три отрасли, один подход: разобраться до конца.</strong>
+    Проектирую и сопровождаю изделия: от эскиза и расчётов до рабочей КД и авторского надзора в цехах.<br>
+    Ракетно-космическая техника, промышленное оборудование, беспилотники - три отрасли, один подход: разобраться до конца.<br>
+    <strong>Ищу задачи в беспилотных системах и сложном промышленном оборудовании.</strong>
   </p>
   <div class="hero-actions">
     <a href="#projects" class="btn-primary">Смотреть проекты</a>
     <a href="#contact" class="btn-ghost">Написать мне</a>
+    <a href="Gushchin-Georgiy-CV.pdf" class="btn-ghost" download>Скачать резюме</a>
   </div>
   <div class="hero-stats">
     <div class="stat">
@@ -529,8 +562,8 @@ footer {
       <div class="stat-label">лет опыта</div>
     </div>
     <div class="stat">
-      <div class="stat-num">1000+</div>
-      <div class="stat-label">КД-документов</div>
+      <div class="stat-num">1300+</div>
+      <div class="stat-label">комплектов КД</div>
     </div>
     <div class="stat">
       <div class="stat-num">3</div>
@@ -547,23 +580,25 @@ footer {
 <section id="about">
   <div class="left">
     <div class="section-label reveal">О себе</div>
-    <h2 class="reveal reveal-delay-1">ВНИМАТЕЛЬНО<br>И СПОКОЙНО</h2>
+    <h2 class="reveal reveal-delay-1">Как я<br>устроен</h2>
     <div class="about-text reveal reveal-delay-2">
-      <p>Получая задачу, я сразу начинаю её раскручивать. Рассматриваю со всех сторон, пытаюсь понять, как части влияют друг на друга и на внешние системы — потом структурирую и приступаю. Это не методика, это просто как я устроен.</p>
-      <p>Шесть лет назад вышел из МАИ и попал в КБ «Салют» — тепловая изоляция ракет-носителей, Байконур, модуль <span class="highlight">«Наука»</span>. Потом были биореакторы, CIP-мойки, эстакады для железнодорожных составов, пропеллеры для лёгкой авиации. Сейчас — закрылки беспилотников. Кажется несвязанным. На самом деле это одна и та же история: взять задачу, разобраться полностью, сделать правильно.</p>
-      <p>Параллельно осваиваю AI-инструменты: собрал телеграм-бота с автоматической обработкой форм через Make и OpenRouter. Сделал ремонт в квартире по собственным 3D-моделям. Не жду разрешения задать неудобный вопрос — даже если его нужно задавать руководителю.</p>
+      <p>Получая задачу, я сразу начинаю её раскручивать: рассматриваю со всех сторон, пытаюсь понять, как части влияют друг на друга и на внешние системы, - потом структурирую и приступаю. Это не методика, это просто как я устроен.</p>
+      <p>Шесть лет назад вышел из МАИ и попал в КБ «Салют» - тепловая изоляция ракет-носителей, Байконур, модуль <span class="highlight">«Наука»</span>. Потом были биореакторы, CIP-мойки, эстакады, пропеллеры для лёгкой авиации. Сейчас - закрылки беспилотников и узлы экспериментальной установки. Кажется несвязанным, но это одна и та же история: взять задачу, разобраться полностью, сделать правильно.</p>
+      <p>Последний год параллельно веду нормоконтроль и аудит КД в сертификационной компании - за это время разобрал нормативную базу глубже, чем за предыдущие пять, и вернулся к конструированию с более жёсткой дисциплиной выпуска документации. Часть задач беру частной практикой.</p>
+      <p>Рядом с основной работой осваиваю AI-инструменты: собрал телеграм-бота с автоматической обработкой форм через Make и OpenRouter. Ремонт в квартире сделал по собственным 3D-моделям. Не жду разрешения задать неудобный вопрос - даже если задавать его нужно руководителю.</p>
     </div>
   </div>
 
   <div class="about-right reveal reveal-delay-3">
     <!-- Фото: файл Я.jpg должен лежать в папке media/ рядом с portfolio.html -->
-    <img src="media/Я.jpg" alt="Георгий Гущин" class="about-photo">
+    <img src="media/Я.jpg" alt="Георгий Гущин, инженер-конструктор" class="about-photo">
 
     <div class="about-pills">
       <span class="pill">SolidWorks</span>
-      <span class="pill">NX Unigraphics</span>
+      <span class="pill">Siemens NX</span>
       <span class="pill">КОМПАС-3D</span>
       <span class="pill">ЕСКД</span>
+      <span class="pill">Нормоконтроль</span>
       <span class="pill">Аэрокосмос</span>
       <span class="pill">БПЛА</span>
       <span class="pill">Биотех</span>
@@ -571,13 +606,35 @@ footer {
     </div>
 
     <div class="career-line">
-      <div class="career-item">
-        <div class="career-year">2025–н.в.</div>
-        <div>
-          <div class="career-role">Инженер-конструктор</div>
-          <div class="career-company">Транспорт Будущего</div>
+
+      <div class="career-parallel">
+        <div class="career-parallel-label">2026 · параллельно</div>
+        <div class="career-item">
+          <div class="career-year">2026–н.в.</div>
+          <div>
+            <div class="career-role">Технический писатель, нормоконтроль КД</div>
+            <div class="career-company">Сертификат+</div>
+            <div class="career-tag">основное · удалённо</div>
+          </div>
+        </div>
+        <div class="career-item">
+          <div class="career-year">2026–н.в.</div>
+          <div>
+            <div class="career-role">Инженер-конструктор</div>
+            <div class="career-company">Частная практика · Профи.ру</div>
+            <div class="career-tag">проектная занятость</div>
+          </div>
+        </div>
+        <div class="career-item">
+          <div class="career-year">2025–н.в.</div>
+          <div>
+            <div class="career-role">Инженер-конструктор</div>
+            <div class="career-company">Транспорт Будущего</div>
+            <div class="career-tag">совместительство · удалённо</div>
+          </div>
         </div>
       </div>
+
       <div class="career-item">
         <div class="career-year">2023–2025</div>
         <div>
@@ -586,24 +643,10 @@ footer {
         </div>
       </div>
       <div class="career-item">
-        <div class="career-year">2022–2023</div>
+        <div class="career-year">2020–2023</div>
         <div>
-          <div class="career-role">Инженер-конструктор 1 кат.</div>
-          <div class="career-company">КБ «Салют» / ГКНПЦ Хруничев</div>
-        </div>
-      </div>
-      <div class="career-item">
-        <div class="career-year">2021–2022</div>
-        <div>
-          <div class="career-role">Инженер-конструктор 2 кат.</div>
-          <div class="career-company">КБ «Салют» / ГКНПЦ Хруничев</div>
-        </div>
-      </div>
-      <div class="career-item">
-        <div class="career-year">2020–2021</div>
-        <div>
-          <div class="career-role">Инженер-конструктор 3 кат.</div>
-          <div class="career-company">КБ «Салют» / ГКНПЦ Хруничев</div>
+          <div class="career-role">Инженер-конструктор, 3 → 1 категория</div>
+          <div class="career-company">КБ «Салют» / ГКНПЦ Хруничева</div>
         </div>
       </div>
       <div class="career-item">
@@ -614,6 +657,7 @@ footer {
         </div>
       </div>
     </div>
+    <p class="career-note">Сейчас совмещаю основную работу, совместительство и частную практику.</p>
   </div>
 </section>
 
@@ -633,8 +677,8 @@ footer {
             <div class="carousel-item"><img src="media/Теплоизоляция (1).png" alt="Теплоизоляция 1"></div>
             <div class="carousel-item"><img src="media/Теплоизоляция (2).png" alt="Теплоизоляция 2"></div>
           </div>
-          <button class="carousel-btn carousel-prev">&#8249;</button>
-          <button class="carousel-btn carousel-next">&#8250;</button>
+          <button class="carousel-btn carousel-prev" aria-label="Предыдущее">&#8249;</button>
+          <button class="carousel-btn carousel-next" aria-label="Следующее">&#8250;</button>
           <div class="carousel-dots">
             <span class="dot active"></span><span class="dot"></span><span class="dot"></span>
           </div>
@@ -646,8 +690,8 @@ footer {
           <span class="card-year">2020–23</span>
         </div>
         <div class="card-title">Тепловая изоляция ракет-носителей</div>
-        <div class="card-desc">Головные обтекатели, межбаковые и промежуточные отсеки. Разработка геометрии пакета, состава и способов монтажа. В 2021 году — заводские испытания модуля «Наука» на Байконуре.</div>
-        <span class="card-company">КБ «Салют» / ГКНПЦ Хруничев</span>
+        <div class="card-desc">Головные обтекатели, межбаковые и промежуточные отсеки. Разработка геометрии пакета, состава и способов монтажа. В 2021 году - заводские испытания модуля «Наука» на Байконуре.</div>
+        <span class="card-company">КБ «Салют» / ГКНПЦ Хруничева</span>
       </div>
       <div class="card-accent-line"></div>
     </div>
@@ -664,7 +708,7 @@ footer {
         </div>
         <div class="card-title">Платформа и обтекатель двигателя торможения</div>
         <div class="card-desc">Платформа из Д16Т, формованный стеклопластиковый обтекатель со сложной геометрией тепловой изоляции и тепловой защиты снаружи.</div>
-        <span class="card-company">КБ «Салют» / ГКНПЦ Хруничев</span>
+        <span class="card-company">КБ «Салют» / ГКНПЦ Хруничева</span>
       </div>
       <div class="card-accent-line"></div>
     </div>
@@ -677,11 +721,11 @@ footer {
             <div class="carousel-item"><img src="media/Реактор (1).png" alt="Биореактор вид 1"></div>
             <div class="carousel-item"><img src="media/Реактор (2).png" alt="Биореактор вид 2"></div>
             <div class="carousel-item">
-              <video loop muted playsinline><source src="media/Биореактор.mp4" type="video/mp4"></video>
+              <video loop muted playsinline preload="none"><source src="media/Биореактор.mp4" type="video/mp4"></video>
             </div>
           </div>
-          <button class="carousel-btn carousel-prev">&#8249;</button>
-          <button class="carousel-btn carousel-next">&#8250;</button>
+          <button class="carousel-btn carousel-prev" aria-label="Предыдущее">&#8249;</button>
+          <button class="carousel-btn carousel-next" aria-label="Следующее">&#8250;</button>
           <div class="carousel-dots">
             <span class="dot active"></span><span class="dot"></span><span class="dot"></span>
           </div>
@@ -689,11 +733,11 @@ footer {
       </div>
       <div class="card-body">
         <div class="card-meta">
-          <div class="card-tags"><span class="tag accent">Биотех</span><span class="tag">SolidWorks</span><span class="tag">500+ КД</span></div>
+          <div class="card-tags"><span class="tag accent">Биотех</span><span class="tag">SolidWorks</span><span class="tag">32 куб. м</span></div>
           <span class="card-year">2023–25</span>
         </div>
         <div class="card-title">Биореактор</div>
-        <div class="card-desc">Полная разработка 3D-сборки — от общего вида на бумаге. Более 500 конструкторских документов по ЕСКД, ГОСТам и отраслевым стандартам.</div>
+        <div class="card-desc">Полная разработка 3D-сборки биореактора объёмом 32 куб. м - от общего вида на бумаге до КД: около 400 оригинальных деталей и 100 покупных. Один из проектов Прометаина, где всего выпущено более 500 комплектов КД по ЕСКД и отраслевым стандартам.</div>
         <span class="card-company">Прометаин</span>
       </div>
       <div class="card-accent-line"></div>
@@ -702,7 +746,7 @@ footer {
     <!-- 4. CIP-мойка: одно видео -->
     <div class="project-card">
       <div class="card-media">
-        <video autoplay loop muted playsinline>
+        <video data-inview loop muted playsinline preload="metadata">
           <source src="media/CIP-мойка.mp4" type="video/mp4">
         </video>
       </div>
@@ -712,7 +756,7 @@ footer {
           <span class="card-year">2023–25</span>
         </div>
         <div class="card-title">CIP-мойка промышленного оборудования</div>
-        <div class="card-desc">Руководитель предложил не закупать — а разработать. Анализ аналогов, тепловой расчёт, подбор компонентов, запросы КП у поставщиков, 3D-модель и полный комплект КД.</div>
+        <div class="card-desc">Руководитель предложил не закупать, а разработать. Анализ аналогов, подбор компонентов, запросы КП у поставщиков, принципиальная гидравлическая схема, 3D-модель и полный комплект КД. Покупная система стоила около 600 тыс. руб., целевой бюджет - до 100 тыс.</div>
         <span class="card-company">Прометаин</span>
       </div>
       <div class="card-accent-line"></div>
@@ -721,7 +765,7 @@ footer {
     <!-- 5. Эстакада: одно видео -->
     <div class="project-card">
       <div class="card-media">
-        <video autoplay loop muted playsinline>
+        <video data-inview loop muted playsinline preload="metadata">
           <source src="media/ЭСТАКАДА.mp4" type="video/mp4">
         </video>
       </div>
@@ -744,11 +788,11 @@ footer {
           <div class="carousel-track">
             <div class="carousel-item"><img src="media/Закрылок 2.png" alt="Закрылок БПЛА"></div>
             <div class="carousel-item">
-              <video loop muted playsinline><source src="media/Закрылок 2.mp4" type="video/mp4"></video>
+              <video loop muted playsinline preload="none"><source src="media/Закрылок 2.mp4" type="video/mp4"></video>
             </div>
           </div>
-          <button class="carousel-btn carousel-prev">&#8249;</button>
-          <button class="carousel-btn carousel-next">&#8250;</button>
+          <button class="carousel-btn carousel-prev" aria-label="Предыдущее">&#8249;</button>
+          <button class="carousel-btn carousel-next" aria-label="Следующее">&#8250;</button>
           <div class="carousel-dots">
             <span class="dot active"></span><span class="dot"></span>
           </div>
@@ -756,17 +800,57 @@ footer {
       </div>
       <div class="card-body">
         <div class="card-meta">
-          <div class="card-tags"><span class="tag accent">БПЛА</span><span class="tag">NX</span><span class="tag">Кинематика</span></div>
+          <div class="card-tags"><span class="tag accent">БПЛА</span><span class="tag">Siemens NX</span><span class="tag">Кинематическая схема</span></div>
           <span class="card-year">2025–н.в.</span>
         </div>
         <div class="card-title">Закрылок беспилотного ЛА</div>
-        <div class="card-desc">Моделирование в NX, кинематическая схема управления закрылком. В процессе разработки выявил конструктивную неувязку в теоретическом контуре — решение согласовано с аэродинамиками.</div>
+        <div class="card-desc">Моделирование в Siemens NX, кинематическая схема управления закрылком. В процессе разработки выявил конструктивную неувязку в теоретическом контуре - решение согласовано с аэродинамиками.</div>
         <span class="card-company">Транспорт Будущего</span>
       </div>
       <div class="card-accent-line"></div>
     </div>
 
-    <!-- 7. Пропеллер: карусель 2 картинки + видео -->
+    <!-- 7. Пиролизная установка: без медиа (NDA), SVG-покрышки -->
+    <div class="project-card">
+      <div class="card-media">
+        <svg class="card-svg" viewBox="0 0 160 90" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Автомобильные покрышки">
+          <rect width="160" height="90" fill="#1C1917"/>
+          <ellipse cx="80" cy="98" rx="95" ry="34" fill="#8C1F2E" opacity="0.12"/>
+          <!-- покрышка 1 -->
+          <g transform="translate(50,54)">
+            <circle r="30" fill="none" stroke="#2A2623" stroke-width="12"/>
+            <circle r="35.5" fill="none" stroke="#3A3633" stroke-width="1" stroke-dasharray="2.5 4"/>
+            <circle r="16" fill="none" stroke="#463f3b" stroke-width="2.5"/>
+            <circle r="6" fill="#252220"/>
+          </g>
+          <!-- покрышка 2 -->
+          <g transform="translate(104,44)">
+            <circle r="26" fill="none" stroke="#26221f" stroke-width="11"/>
+            <circle r="31" fill="none" stroke="#3A3633" stroke-width="1" stroke-dasharray="2.5 4"/>
+            <circle r="13.5" fill="none" stroke="#443d39" stroke-width="2.5"/>
+            <circle r="5" fill="#252220"/>
+          </g>
+          <!-- покрышка 3 (сзади) -->
+          <g transform="translate(126,66)" opacity="0.7">
+            <circle r="20" fill="none" stroke="#221e1c" stroke-width="9"/>
+            <circle r="24" fill="none" stroke="#332f2c" stroke-width="1" stroke-dasharray="2 4"/>
+            <circle r="10" fill="none" stroke="#3d3733" stroke-width="2"/>
+          </g>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="card-meta">
+          <div class="card-tags"><span class="tag accent">Частная практика</span><span class="tag">SolidWorks Simulation</span><span class="tag">Материалы</span></div>
+          <span class="card-year">2026</span>
+        </div>
+        <div class="card-title">Экспериментальная установка пиролиза</div>
+        <div class="card-desc">Разработка узлов установки пиролиза автомобильных покрышек в расплаве свинца при температуре около плюс 500 °C. Полный цикл по уровнемеру на границе двух сред: анализ данных, поиск решений в смежных отраслях, патентный поиск, конструкция, расчёты в SolidWorks Simulation, техническое обоснование, выпуск КД. Предложенное заказчиком решение проработал, обосновал отказ и защитил альтернативу - керамическую вставку в стенку корпуса. По итогам заказчик перешёл к долгосрочному сотрудничеству.</div>
+        <span class="card-company">Частная практика</span>
+      </div>
+      <div class="card-accent-line"></div>
+    </div>
+
+    <!-- 8. Пропеллер: карусель 2 картинки + видео -->
     <div class="project-card">
       <div class="card-media">
         <div class="carousel">
@@ -774,11 +858,11 @@ footer {
             <div class="carousel-item"><img src="media/propeller 085.png" alt="Пропеллер вид 1"></div>
             <div class="carousel-item"><img src="media/propeller.jpg" alt="Пропеллер вид 2"></div>
             <div class="carousel-item">
-              <video loop muted playsinline><source src="media/MTV-6 Proprller.mp4" type="video/mp4"></video>
+              <video loop muted playsinline preload="none"><source src="media/MTV-6 Proprller.mp4" type="video/mp4"></video>
             </div>
           </div>
-          <button class="carousel-btn carousel-prev">&#8249;</button>
-          <button class="carousel-btn carousel-next">&#8250;</button>
+          <button class="carousel-btn carousel-prev" aria-label="Предыдущее">&#8249;</button>
+          <button class="carousel-btn carousel-next" aria-label="Следующее">&#8250;</button>
           <div class="carousel-dots">
             <span class="dot active"></span><span class="dot"></span><span class="dot"></span>
           </div>
@@ -786,17 +870,17 @@ footer {
       </div>
       <div class="card-body">
         <div class="card-meta">
-          <div class="card-tags"><span class="tag accent">Фриланс</span><span class="tag">SolidWorks</span><span class="tag">Авиация</span></div>
-          <span class="card-year">2024</span>
+          <div class="card-tags"><span class="tag accent">Частная практика</span><span class="tag">SolidWorks</span><span class="tag">Авиация</span></div>
+          <span class="card-year">март 2026</span>
         </div>
         <div class="card-title">Пропеллер лёгкомоторного самолёта</div>
         <div class="card-desc">Частный заказ. У заказчика было только наименование. Самостоятельно нашёл стандарты и открытую документацию изготовителя. Создал 3D-модели и анимацию движения по открытым данным.</div>
-        <span class="card-company">Частный заказ</span>
+        <span class="card-company">Частная практика</span>
       </div>
       <div class="card-accent-line"></div>
     </div>
 
-    <!-- 8. Чемодан: карусель 2 картинки + видео -->
+    <!-- 9. Чемодан: карусель 2 картинки + видео -->
     <div class="project-card">
       <div class="card-media">
         <div class="carousel">
@@ -804,11 +888,11 @@ footer {
             <div class="carousel-item"><img src="media/Коробка закрыта.png" alt="Чемодан закрыт"></div>
             <div class="carousel-item"><img src="media/Коробка открыта.png" alt="Чемодан открыт"></div>
             <div class="carousel-item">
-              <video loop muted playsinline><source src="media/ЯС.48Б.П-00-000 Ящик снабжения.mp4" type="video/mp4"></video>
+              <video loop muted playsinline preload="none"><source src="media/ЯС.48Б.П-00-000 Ящик снабжения.mp4" type="video/mp4"></video>
             </div>
           </div>
-          <button class="carousel-btn carousel-prev">&#8249;</button>
-          <button class="carousel-btn carousel-next">&#8250;</button>
+          <button class="carousel-btn carousel-prev" aria-label="Предыдущее">&#8249;</button>
+          <button class="carousel-btn carousel-next" aria-label="Следующее">&#8250;</button>
           <div class="carousel-dots">
             <span class="dot active"></span><span class="dot"></span><span class="dot"></span>
           </div>
@@ -820,7 +904,7 @@ footer {
           <span class="card-year">2024</span>
         </div>
         <div class="card-title">Чемодан для пневматического пистолета</div>
-        <div class="card-desc">В продаже не было того, что нужно — сделал сам. SolidWorks: 3D-модели, выкройки вставок. Заказал раскрой на станке, собрал опытный образец.</div>
+        <div class="card-desc">В продаже не было того, что нужно - сделал сам. SolidWorks: 3D-модели, выкройки вставок. Заказал раскрой на станке, собрал опытный образец.</div>
         <span class="card-company">Личный проект</span>
       </div>
       <div class="card-accent-line"></div>
@@ -843,7 +927,11 @@ footer {
         <div class="skill-bar"><div class="skill-fill"></div></div>
       </div>
       <div class="skill-item" style="--w:80%">
-        <div class="skill-top"><span class="skill-name">NX Unigraphics</span><span class="skill-level">Уверенно</span></div>
+        <div class="skill-top"><span class="skill-name">Siemens NX</span><span class="skill-level">Уверенно</span></div>
+        <div class="skill-bar"><div class="skill-fill"></div></div>
+      </div>
+      <div class="skill-item" style="--w:70%">
+        <div class="skill-top"><span class="skill-name">SolidWorks Simulation</span><span class="skill-level">Расчёты</span></div>
         <div class="skill-bar"><div class="skill-fill"></div></div>
       </div>
       <div class="skill-item" style="--w:68%">
@@ -854,23 +942,25 @@ footer {
         <div class="skill-top"><span class="skill-name">AutoCAD</span><span class="skill-level">Уверенно</span></div>
         <div class="skill-bar"><div class="skill-fill"></div></div>
       </div>
-      <div class="skill-item" style="--w:40%">
-        <div class="skill-top"><span class="skill-name">Solid Edge</span><span class="skill-level">Базово</span></div>
-        <div class="skill-bar"><div class="skill-fill"></div></div>
-      </div>
-      <div class="skill-item" style="--w:40%">
-        <div class="skill-top"><span class="skill-name">Creo (PTC)</span><span class="skill-level">Базово</span></div>
-        <div class="skill-bar"><div class="skill-fill"></div></div>
-      </div>
+      <p class="skills-note">Знаком с интерфейсом (учебные проекты): Solid Edge, Creo (PTC).</p>
 
-      <h3>Нормативная база</h3>
+      <h3>Стандарты</h3>
       <div class="tools-list">
         <span class="tool-badge">ЕСКД</span>
-        <span class="tool-badge">Авиационные ОСТы</span>
-        <span class="tool-badge">Нефтегазовые стандарты</span>
         <span class="tool-badge">ГОСТ</span>
-        <span class="tool-badge">ТЗ / ТУ</span>
+        <span class="tool-badge">ТУ (ГОСТ 2.114)</span>
+        <span class="tool-badge">Нормоконтроль</span>
+        <span class="tool-badge">Нефтегазовые стандарты</span>
+      </div>
+
+      <h3>Выпуск и сопровождение КД</h3>
+      <div class="tools-list">
+        <span class="tool-badge">Листовой металл и развёртки</span>
+        <span class="tool-badge">DXF на лазерную резку</span>
+        <span class="tool-badge">Извещения об изменении</span>
         <span class="tool-badge">Авторский надзор</span>
+        <span class="tool-badge">Программа и методика испытаний</span>
+        <span class="tool-badge">PDM T-FLEX</span>
       </div>
     </div>
 
@@ -911,7 +1001,7 @@ footer {
     <div class="section-label">Контакт</div>
     <p class="contact-tagline">
       Интересная задача?<br>
-      <em>Пишите — разберёмся.</em>
+      <em>Пишите - разберёмся.</em>
     </p>
     <div class="contact-links">
       <a href="mailto:georgygushin@gmail.com" class="contact-link">
@@ -921,6 +1011,13 @@ footer {
           <div class="contact-link-val">georgygushin@gmail.com</div>
         </div>
       </a>
+      <a href="https://t.me/pls_q" target="_blank" rel="noopener" class="contact-link">
+        <span class="contact-link-icon">✈</span>
+        <div>
+          <div class="contact-link-label">Telegram</div>
+          <div class="contact-link-val">t.me/pls_q</div>
+        </div>
+      </a>
       <a href="tel:+79254362286" class="contact-link">
         <span class="contact-link-icon">☎</span>
         <div>
@@ -928,7 +1025,7 @@ footer {
           <div class="contact-link-val">+7 (925) 436-22-86</div>
         </div>
       </a>
-      <a href="https://vk.com/georgy_gushin" target="_blank" class="contact-link">
+      <a href="https://vk.com/georgy_gushin" target="_blank" rel="noopener" class="contact-link">
         <span class="contact-link-icon">⬡</span>
         <div>
           <div class="contact-link-label">VK</div>
@@ -940,7 +1037,7 @@ footer {
 
   <div class="contact-right reveal reveal-delay-2">
     <p class="contact-note">
-      В июне 2026 года возвращаюсь в <strong>Москву</strong>, открыт к командировкам.<br><br>
+      Живу и работаю в <strong>Москве</strong> (Новопеределкино), открыт к командировкам.<br><br>
       Интересуют задачи в направлении <strong>беспилотных систем</strong>, <strong>роботизированной техники</strong> и сложного промышленного оборудования.<br><br>
       Рассматриваю как <strong>штатную позицию</strong>, так и <strong>проектную работу</strong>.
     </p>
@@ -953,18 +1050,6 @@ footer {
 </footer>
 
 <script>
-/* ── Cursor ── */
-const cursor = document.getElementById('cursor');
-const ring   = document.getElementById('cursorRing');
-let mx = 0, my = 0, rx = 0, ry = 0;
-document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-(function tick() {
-  cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
-  rx += (mx - rx) * .12; ry += (my - ry) * .12;
-  ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
-  requestAnimationFrame(tick);
-})();
-
 /* ── Nav ── */
 window.addEventListener('scroll', () => {
   document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
@@ -986,6 +1071,16 @@ const co = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.04 });
 document.querySelectorAll('.project-card').forEach(c => co.observe(c));
+
+/* ── Standalone videos: играем только когда в зоне видимости ── */
+const vo = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    const v = e.target;
+    if (e.isIntersecting) { v.play().catch(() => {}); }
+    else { v.pause(); }
+  });
+}, { threshold: 0.25 });
+document.querySelectorAll('video[data-inview]').forEach(v => vo.observe(v));
 
 /* ── Carousels ── */
 document.querySelectorAll('.carousel').forEach(el => {
